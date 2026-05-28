@@ -16,7 +16,7 @@ def _max_from_configs(task_data_config_list: Optional[List[List[Any]]], key: str
 
 
 class Model(nn.Module):
-    """Compatibility wrapper for UniTS-style experiment code."""
+    """Compatibility wrapper for fecam-style experiment code."""
 
     def __init__(self, args, task_data_config_list=None, pretrain: bool = False):
         super().__init__()
