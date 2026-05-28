@@ -1,0 +1,17 @@
+seed: 42
+task: forecast
+seq_len: 96
+pred_len: 24
+num_vars: 7
+num_classes: 4
+patch_len: 16
+stride: 8
+d_model: 128
+depth: 3
+n_heads: 4
+num_experts: 4
+top_k: 2
+dropout: 0.1
+batch_size: 16
+train_steps: 20
+learning_rate: 0.0003
