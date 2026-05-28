@@ -1,11 +1,11 @@
-# Reproduction Gap Against UniTS
+# Reproduction Gap Against fecam
 
-This checklist tracks what Union still needs before it matches the engineering coverage of `mims-harvard/UniTS`.
+This checklist tracks what Union still needs before it matches the engineering coverage of `mims-harvard/fecam`.
 
 ## Added In This Scaffold
 
-- UniTS-style supervised entry point: `run.py`.
-- UniTS-style masked reconstruction pretraining entry point: `run_pretrain.py`.
+- fecam-style supervised entry point: `run.py`.
+- fecam-style masked reconstruction pretraining entry point: `run_pretrain.py`.
 - Experiment modules under `exp/`.
 - Multi-task config files under `data_provider/`.
 - Balanced task iterator and DDP utility stubs under `utils/`.
@@ -19,5 +19,5 @@ This checklist tracks what Union still needs before it matches the engineering c
 - Segment loaders for MSL, PSM, SMAP, SMD, and SWAT anomaly detection.
 - Imputation masking policy parity with the benchmark scripts.
 - Checkpoint loading modes for supervised finetuning, prompt tuning, and zero-shot evaluation.
-- Distributed training parity with UniTS DDP/AMP behavior.
+- Distributed training parity with fecam DDP/AMP behavior.
 - Metric tables and result aggregation scripts for every paper table.
