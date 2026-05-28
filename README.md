@@ -6,7 +6,7 @@ This repository is a clean implementation scaffold for the paper:
 
 > Union: Unified Time-Series Modeling for Diverse Tasks under Heterogeneous Temporal Dynamics
 
-The engineering layout is inspired by [mims-harvard/UniTS](https://github.com/mims-harvard/UniTS), but the code here is organized around the Union paper design: unified tokenization, frequency-aware interaction, TCI-MoE sequence operators, and lightweight task heads.
+The engineering layout is inspired by [Fecam](https://github.com/Zero-coder/Fecam), but the code here is organized around the Union paper design: unified tokenization, frequency-aware interaction, TCI-MoE sequence operators, and lightweight task heads.
 
 ## Highlights
 
