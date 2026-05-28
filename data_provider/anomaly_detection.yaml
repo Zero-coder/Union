@@ -1,0 +1,15 @@
+task_dataset:
+  MSL:
+    task_name: anomaly_detection
+    dataset_name: MSL
+    dataset: MSL
+    data: MSL
+    root_path: ../dataset/MSL
+    seq_len: 96
+    label_len: 0
+    pred_len: 0
+    features: M
+    embed: timeF
+    enc_in: 55
+    dec_in: 55
+    c_out: 55
