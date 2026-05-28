@@ -4,7 +4,7 @@ Union follows a unified modeling route for heterogeneous time-series tasks. The 
 
 ## Reference Points
 
-The reference repository, UniTS, is useful for engineering choices:
+The reference repository, fecam, is useful for engineering choices:
 
 - central `run.py`/experiment entry points,
 - YAML-driven task and dataset configs,
