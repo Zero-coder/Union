@@ -14,14 +14,14 @@ The engineering layout is inspired by [Fecam](https://github.com/Zero-coder/Feca
 - Unified token representation with series, prompt, generation, and class tokens.
 - Frequency-aware channel and temporal interaction blocks.
 - TCI-MoE experts for length-adaptive temporal transformations.
-- UniTS-style experiment stack for supervised, pretraining, few-shot, imputation, anomaly detection, and zero-shot runs.
+- fecam-style experiment stack for supervised, pretraining, few-shot, imputation, anomaly detection, and zero-shot runs.
 
 ## Repository Layout
 
 ```text
 Union/
   configs/              Example smoke-test configs
-  data_provider/        UniTS-style task YAMLs and data factory
+  data_provider/        fecam-style task YAMLs and data factory
   docs/                 Paper and architecture notes
   exp/                  Supervised and pretraining experiment loops
   models/               Experiment-compatible Union model adapter
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 python train.py --config configs/smoke_forecast.yaml
 ```
 
-UniTS-style scripts are also available:
+fecam-style scripts are also available:
 
 ```bash
 bash scripts/supervised_learning/Union_supervised.sh
@@ -58,4 +58,4 @@ bash scripts/zero_shot/Union_forecast_new_length_unify.sh
 
 ## Status
 
-The repository now has a UniTS-like research-code layout. The current data factory uses synthetic data as a smoke-test fallback; the next milestone is wiring the real benchmark loaders listed in `docs/reproduction_gap.md`.
+The repository now has a fecam-like research-code layout. The current data factory uses synthetic data as a smoke-test fallback; the next milestone is wiring the real benchmark loaders listed in `docs/reproduction_gap.md`.
