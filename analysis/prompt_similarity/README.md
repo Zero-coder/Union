@@ -1,71 +1,87 @@
-# Prompt representation structure analysis
+# Figure 5: prompt representation structure analysis
 
-This directory provides code for evaluating domain structure from a labeled
-dataset-level cosine-similarity matrix. It computes within-domain similarity,
-cross-domain similarity, and the cosine-distance silhouette score.
+This directory contains the numerical similarity matrix, domain labels, results,
+and code for reproducing the quantitative calculations associated with Figure 5.
+The analysis covers 16 datasets in nine predefined domains.
 
-The release contains the evaluator and analytical unit tests. Similarity
-matrices, prompt embeddings, model checkpoints, and experimental results are
-not included in this code release; users supply their own input files.
-Test fixtures are used only to check the calculations.
+## Data source and scope
 
-## Requirements
+The supplied matrix was initially reconstructed from the colors and colorbar of
+the existing Figure 5 image. Corresponding off-diagonal entries were averaged to
+make the matrix symmetric, and diagonal entries were set to one. The author
+subsequently confirmed agreement with the intended Figure 5 values and the
+three-decimal results below. This file is not a direct checkpoint export;
+original prompt embeddings and training checkpoints are not included.
+See [`provenance.json`](provenance.json) for the preparation history and hashes.
+The CSV preserves the prepared numerical artifact; its decimal precision does
+not establish the precision of the unavailable original embeddings.
 
-Python 3.8 or newer. The evaluator uses only the Python standard library.
+The domain assignments reproduce the labels displayed in Figure 5. They are
+predefined groups, not labels fitted by a clustering algorithm. The scripts
+reproduce calculations from these supplied inputs, not model training.
 
-## Inputs
+## Files
 
-- `--matrix`: UTF-8 CSV with header `dataset,<dataset names>`. Each subsequent
-  row contains the dataset name and its similarities in the same column order.
-  The matrix must be square and symmetric, have a unit diagonal, and contain
-  finite entries in `[-1, 1]`.
-- `--domains`: UTF-8 CSV with the exact header `dataset,domain`, containing
-  one assignment for every dataset in the matrix. Row order is unrestricted.
-- `--output`: destination JSON file, defaulting to `metrics.json`.
+| File | Contents |
+| --- | --- |
+| `similarity_matrix.csv` | Symmetric 16-by-16 matrix, with dataset names in the header and first column. |
+| `dataset_domains.csv` | Dataset-to-domain assignments used for Figure 5. |
+| `metrics.json` | Recomputed metrics, pair counts, domain sizes, per-dataset scores, and input hashes. |
+| `provenance.json` | Matrix preparation history and author confirmation. |
+| `evaluate_prompt_structure.py` | Python implementation of the quantitative analysis. |
+| `test_evaluate_prompt_structure.py` | Analytical unit tests and input-validation tests. |
 
-Use a matrix computed from the dataset-level representations and preserve the
-data-preparation and experiment settings alongside the inputs. Validation in
-this utility checks matrix structure and label alignment; it does not check
-positive semidefiniteness or the source of the representations.
+## Reproduce the calculations
 
-## Usage
-
-From the repository root, supply the paths to your input files:
+Python 3.8 or newer is sufficient; no third-party packages are required.
+From the repository root, run:
 
 ```bash
-python analysis/prompt_similarity/evaluate_prompt_structure.py --matrix similarity_matrix.csv --domains dataset_domains.csv --output metrics.json
+python analysis/prompt_similarity/evaluate_prompt_structure.py --matrix analysis/prompt_similarity/similarity_matrix.csv --domains analysis/prompt_similarity/dataset_domains.csv --output analysis/prompt_similarity/metrics.json
 ```
 
-Run the analytical tests:
+The evaluator computes all results from its inputs; it does not contain the
+reported metric values. Run the analytical tests with:
 
 ```bash
 python -m unittest discover -s analysis/prompt_similarity -p "test_*.py" -v
 ```
 
-## Metric definitions
+## Definitions and results
+
+| Metric | Value (three decimal places) |
+| --- | ---: |
+| Mean within-domain cosine similarity | 0.479 |
+| Mean cross-domain cosine similarity | 0.296 |
+| Cosine-distance silhouette score | 0.027 |
 
 For similarity matrix `S`, define cosine dissimilarity as `D[i,j] = 1 - S[i,j]`.
+The pairwise means use unique unordered off-diagonal pairs (`i < j`): 11
+within-domain pairs and 109 cross-domain pairs. Every eligible pair receives
+equal weight; domains are not reweighted to equal size.
 
-- **Mean within-domain similarity:** arithmetic mean over unique unordered
-  dataset pairs `i < j` with the same domain label.
-- **Mean cross-domain similarity:** arithmetic mean over unique unordered
-  dataset pairs `i < j` with different domain labels.
-- **Silhouette score:** for dataset `i`, let `a` be its mean distance to the
-  other members of its domain and `b` the smallest mean distance to any other
-  domain. Its score is `(b - a) / max(a, b)`. Singleton domains and a zero
-  denominator receive a score of zero. The overall score is the unweighted
-  mean over all datasets, including singleton domains.
+For each dataset in a non-singleton domain, `a` is its mean distance to the other
+members of its domain and `b` is the smallest mean distance to any other domain.
+The silhouette value is `(b - a) / max(a, b)`. Singleton domains and a zero
+denominator receive a score of zero. The overall score is the unweighted mean
+across all 16 datasets, including the five singleton domains.
 
-Diagonal entries are excluded from both pairwise means. Each eligible pair
-receives equal weight; domains are not reweighted to equal size. Silhouette
-evaluation requires at least two domains and fewer domains than datasets.
-The supplied domain labels are treated as predefined groups.
+The higher within-domain mean indicates greater average similarity within the
+predefined groups. The near-zero silhouette indicates weak overall separation
+under these labels. These metrics characterize representation structure;
+adaptation performance requires a separate evaluation on the target task.
 
-## Output
+## Input validation and output
 
-The JSON contains full-precision and three-decimal metric values, domain sizes,
-pair counts, per-dataset silhouette scores, calculation conventions, and SHA-256
-hashes of both input files. Only input filenames are recorded, not absolute paths.
+The matrix CSV must have header `dataset,<dataset names>`, matching row labels,
+finite entries in `[-1, 1]`, symmetry, and a unit diagonal. The domains CSV must
+have the exact header `dataset,domain`, with one assignment per dataset.
+Domain rows may appear in any order. Missing, extra, empty, or duplicate labels
+are rejected. Symmetry and diagonal checks use absolute tolerance `1e-10`.
+Silhouette evaluation requires at least two domains and fewer domains than
+datasets. The evaluator does not silently repair inputs or check positive
+semidefiniteness or the source of the representations.
 
-These metrics characterize the organization of the supplied representations.
-Adaptation performance requires a separate evaluation on the target task.
+The output JSON includes full-precision calculations and three-decimal display
+values, calculation conventions, per-dataset scores, and SHA-256 hashes of the
+inputs. Only input filenames are recorded, not absolute paths.
