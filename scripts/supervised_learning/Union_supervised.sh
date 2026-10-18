@@ -2,7 +2,7 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.."
 
-# The default task reads a real ETTh1 CSV; no data are generated automatically.
+# Reads the ETTh1 CSV specified in configs/forecast_csv.yaml.
 exec python run.py \
   --is_training 1 --model_id Union_ETTh1 --model Union \
   --task_data_config_path configs/forecast_csv.yaml \
