@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "datasets": 16,
+    "domains": 9,
+    "within_domain_pairs": 11,
+    "cross_domain_pairs": 109,
+    "singleton_domains": 5
+  },
+  "domain_sizes": {
+    "Audio": 1,
+    "ECG": 2,
+    "EEG/Vision": 1,
+    "Electricity": 2,
+    "Finance": 1,
+    "Human Activity": 4,
+    "Sensors": 1,
+    "Traffic": 1,
+    "Weather": 3
+  },
+  "metrics": {
+    "mean_within_domain_cosine_similarity": 0.47907845545454547,
+    "mean_cross_domain_cosine_similarity": 0.2962517276146789,
+    "cosine_distance_silhouette_score": 0.026987637588326844
+  },
+  "metrics_3dp": {
+    "mean_within_domain_cosine_similarity": "0.479",
+    "mean_cross_domain_cosine_similarity": "0.296",
+    "cosine_distance_silhouette_score": "0.027"
+  },
+  "conventions": {
+    "pair_aggregation": "Unweighted mean over unique unordered pairs i < j; diagonal excluded",
+    "distance": "D_ij = 1 - S_ij",
+    "silhouette_aggregation": "Unweighted mean over every dataset",
+    "singleton_silhouette": 0.0,
+    "zero_denominator_silhouette": 0.0,
+    "domain_grouping": "Predefined labels supplied in dataset_domains.csv; no clustering is fitted"
+  },
+  "per_dataset": [
+    {
+      "dataset": "Exchange",
+      "domain": "Finance",
+      "domain_size": 1,
+      "mean_within_domain_distance_a": null,
+      "nearest_other_domain_mean_distance_b": null,
+      "silhouette": 0.0
+    },
+    {
+      "dataset": "ECL",
+      "domain": "Electricity",
+      "domain_size": 2,
+      "mean_within_domain_distance_a": 0.48390411,
+      "nearest_other_domain_mean_distance_b": 0.5292237466666666,
+      "silhouette": 0.08563417071156358
+    },
+    {
+      "dataset": "ETTh1",
+      "domain": "Weather",
+      "domain_size": 3,
+      "mean_within_domain_distance_a": 0.69469178,
+      "nearest_other_domain_mean_distance_b": 0.44657534,
+      "silhouette": -0.3571604661854499
+    },
+    {
+      "dataset": "ETTh2",
+      "domain": "Weather",
+      "domain_size": 3,
+      "mean_within_domain_distance_a": 0.69469178,
+      "nearest_other_domain_mean_distance_b": 0.40410959,
+      "silhouette": -0.4182893743179169
+    },
+    {
+      "dataset": "Traffic",
+      "domain": "Traffic",
+      "domain_size": 1,
+      "mean_within_domain_distance_a": null,
+      "nearest_other_domain_mean_distance_b": null,
+      "silhouette": 0.0
+    },
+    {
+      "dataset": "Weather",
+      "domain": "Weather",
+      "domain_size": 3,
+      "mean_within_domain_distance_a": 0.79657534,
+      "nearest_other_domain_mean_distance_b": 0.62191781,
+      "silhouette": -0.21926052845170924
+    },
+    {
+      "dataset": "Solar-Energy",
+      "domain": "Electricity",
+      "domain_size": 2,
+      "mean_within_domain_distance_a": 0.48390411,
+      "nearest_other_domain_mean_distance_b": 0.50742009,
+      "silhouette": 0.04634420367549892
+    },
+    {
+      "dataset": "ECG5000",
+      "domain": "ECG",
+      "domain_size": 2,
+      "mean_within_domain_distance_a": 0.5133561600000001,
+      "nearest_other_domain_mean_distance_b": 0.50616438,
+      "silhouette": -0.014009338078265373
+    },
+    {
+      "dataset": "NonInvasiveFetalECGThorax1",
+      "domain": "ECG",
+      "domain_size": 2,
+      "mean_within_domain_distance_a": 0.5133561600000001,
+      "nearest_other_domain_mean_distance_b": 0.60684932,
+      "silhouette": 0.15406321951551327
+    },
+    {
+      "dataset": "JapaneseVowels",
+      "domain": "Audio",
+      "domain_size": 1,
+      "mean_within_domain_distance_a": null,
+      "nearest_other_domain_mean_distance_b": null,
+      "silhouette": 0.0
+    },
+    {
+      "dataset": "FaceDetection",
+      "domain": "EEG/Vision",
+      "domain_size": 1,
+      "mean_within_domain_distance_a": null,
+      "nearest_other_domain_mean_distance_b": null,
+      "silhouette": 0.0
+    },
+    {
+      "dataset": "ElectricDevices",
+      "domain": "Sensors",
+      "domain_size": 1,
+      "mean_within_domain_distance_a": null,
+      "nearest_other_domain_mean_distance_b": null,
+      "silhouette": 0.0
+    },
+    {
+      "dataset": "MotionSenseHAR",
+      "domain": "Human Activity",
+      "domain_size": 4,
+      "mean_within_domain_distance_a": 0.4191780866666666,
+      "nearest_other_domain_mean_distance_b": 0.44109589000000005,
+      "silhouette": 0.04968942996347898
+    },
+    {
+      "dataset": "UWaveGestureLibrary",
+      "domain": "Human Activity",
+      "domain_size": 4,
+      "mean_within_domain_distance_a": 0.43595890666666665,
+      "nearest_other_domain_mean_distance_b": 0.68493151,
+      "silhouette": 0.36349999919456666
+    },
+    {
+      "dataset": "EMOPain",
+      "domain": "Human Activity",
+      "domain_size": 4,
+      "mean_within_domain_distance_a": 0.4378995433333333,
+      "nearest_other_domain_mean_distance_b": 0.6671232899999999,
+      "silhouette": 0.34360027614485866
+    },
+    {
+      "dataset": "Trace",
+      "domain": "Human Activity",
+      "domain_size": 4,
+      "mean_within_domain_distance_a": 0.4049086766666667,
+      "nearest_other_domain_mean_distance_b": 0.672260275,
+      "silhouette": 0.39769060924109084
+    }
+  ],
+  "inputs": {
+    "matrix": {
+      "filename": "similarity_matrix.csv",
+      "sha256": "c5dafee7d483f1fe6e15620fe227e37d49a3c45fe992fc7e0036d8214aea34da"
+    },
+    "domains": {
+      "filename": "dataset_domains.csv",
+      "sha256": "e9357a5a484e5a59c2504635815057bffee9d9219e702c46e78146d5e65ba1f4"
+    }
+  }
+}
