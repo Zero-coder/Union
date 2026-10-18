@@ -20,5 +20,5 @@ Classification and anomaly detection require converted NPZ files:
 Read docs/data_formats.md for required keys, shapes, split rules, and scaling.
 Adapt each YAML to the actual channel count and sequence length of your data.
 UEA/UCR .ts archives and raw anomaly directories are not converted automatically.
-No files were downloaded or fabricated by this command.
+Prepare the files above before training.
 DATA_GUIDE
