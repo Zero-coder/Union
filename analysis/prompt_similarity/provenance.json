@@ -1,22 +1,26 @@
 {
   "artifact": "Figure 5 dataset-level prompt similarity matrix",
-  "status": "author-confirmed matrix used for the released figure analysis",
+  "status": "author-confirmed entrywise match to the model-exported similarity matrix",
   "matrix_file": "similarity_matrix.csv",
   "matrix_sha256": "c5dafee7d483f1fe6e15620fe227e37d49a3c45fe992fc7e0036d8214aea34da",
   "preparation_history": [
     "The local numerical matrix was initially reconstructed by matching cell colors in the existing Figure 5 image to its colorbar.",
     "Corresponding off-diagonal entries were averaged to create a symmetric matrix; diagonal entries were set to one.",
-    "The author subsequently confirmed that these symmetric values match the intended Figure 5 matrix and that the independently calculated metrics round to 0.479, 0.296, and 0.027."
+    "The author subsequently confirmed that the complete released matrix matches their model-exported similarity values entry by entry, not merely the rounded summary metrics of 0.479, 0.296, and 0.027."
   ],
   "original_figure_png_sha256": "d584a18fcabb278c91402f53554b0059a365dc0f07e8d805ce1fe5f7dbc1bae4",
   "domain_labels": "The predefined domain categories shown in Figure 5; no clustering algorithm was fitted to choose these labels.",
   "checkpoint_export": false,
   "original_prompt_arrays_included": false,
-  "verification_scope": "The evaluation script recomputes metrics from the supplied matrix. This is not a reproduction of model training or a direct checkpoint export.",
-  "numeric_precision_note": "CSV precision preserves the prepared numerical artifact; it does not establish the precision of unavailable original model arrays.",
+  "verification_scope": "The evaluation script recomputes metrics from the supplied matrix. Model training and export are outside the scope of this analysis package.",
   "reported_metrics_3dp": {
     "within_mean": 0.479,
     "cross_mean": 0.296,
     "silhouette": 0.027
+  },
+  "author_confirmation": {
+    "statement": "The author reports having verified exact entrywise agreement between their model-exported values and the complete released matrix.",
+    "scope": "All entries of the 16-by-16 similarity matrix.",
+    "basis": "Author confirmation; a separate original model-export file was not inspected during this repository update."
   }
 }
