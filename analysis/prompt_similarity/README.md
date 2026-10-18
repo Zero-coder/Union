@@ -6,15 +6,12 @@ The analysis covers 16 datasets in nine predefined domains.
 
 ## Data source and scope
 
-The supplied matrix was initially reconstructed from the colors and colorbar of
-the existing Figure 5 image. Corresponding off-diagonal entries were averaged to
-make the matrix symmetric, and diagonal entries were set to one. The author
-subsequently confirmed agreement with the intended Figure 5 values and the
-three-decimal results below. This file is not a direct checkpoint export;
-original prompt embeddings and training checkpoints are not included.
-See [`provenance.json`](provenance.json) for the preparation history and hashes.
-The CSV preserves the prepared numerical artifact; its decimal precision does
-not establish the precision of the unavailable original embeddings.
+The author confirms that the supplied matrix matches the model-exported
+similarity values entry by entry. This confirmation covers the complete
+16-by-16 matrix, rather than only the rounded summary metrics.
+The preparation history, author confirmation, and file hashes are recorded
+in [`provenance.json`](provenance.json). Original prompt embeddings and
+training checkpoints are not included in this analysis package.
 
 The domain assignments reproduce the labels displayed in Figure 5. They are
 predefined groups, not labels fitted by a clustering algorithm. The scripts
