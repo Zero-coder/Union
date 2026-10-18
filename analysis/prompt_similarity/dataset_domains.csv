@@ -1,0 +1,17 @@
+dataset,domain
+Exchange,Finance
+ECL,Electricity
+ETTh1,Weather
+ETTh2,Weather
+Traffic,Traffic
+Weather,Weather
+Solar-Energy,Electricity
+ECG5000,ECG
+NonInvasiveFetalECGThorax1,ECG
+JapaneseVowels,Audio
+FaceDetection,EEG/Vision
+ElectricDevices,Sensors
+MotionSenseHAR,Human Activity
+UWaveGestureLibrary,Human Activity
+EMOPain,Human Activity
+Trace,Human Activity
