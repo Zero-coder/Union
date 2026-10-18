@@ -2,21 +2,30 @@ import torch
 from torch import nn
 
 
+def masked_mse(pred, target, missing_mask):
+    """Average squared error over hidden elements only; True means hidden."""
+    if pred.shape != target.shape or missing_mask.shape != target.shape:
+        raise ValueError("Prediction, target and missing mask must have identical shapes.")
+    count = missing_mask.sum()
+    if count.item() == 0:
+        raise ValueError("The missing mask must select at least one element.")
+    return ((pred - target).square() * missing_mask).sum() / count
+
+
 class UnifiedMaskRecLoss(nn.Module):
     def forward(self, model_output, target, mask=None):
-        pred = model_output.get("reconstruction") or model_output.get("forecast")
+        pred = model_output.get("reconstruction")
+        if pred is None:
+            pred = model_output.get("forecast")
         if pred is None:
             raise ValueError("UnifiedMaskRecLoss expects reconstruction or forecast output.")
-        pred = pred[:, : target.size(1), : target.size(2)]
-        target = target[:, : pred.size(1), : pred.size(2)]
-        loss = (pred - target).pow(2)
-        if mask is not None:
-            loss = loss * mask[:, : pred.size(1), : pred.size(2)]
-        return {"loss": loss.mean()}
+        if pred.shape != target.shape:
+            raise ValueError("Reconstruction and target shapes must match exactly.")
+        return {"loss": masked_mse(pred, target, mask) if mask is not None else (pred - target).square().mean()}
 
 
 def mape_loss():
-    return lambda pred, true: (torch.abs((true - pred) / true.clamp_min(1e-5))).mean()
+    return lambda pred, true: (torch.abs(pred - true) / true.abs().clamp_min(1e-5)).mean()
 
 
 def smape_loss():
@@ -24,4 +33,4 @@ def smape_loss():
 
 
 def mase_loss():
-    return nn.L1Loss()
+    raise NotImplementedError("MASE requires an in-sample seasonal naive denominator; use an explicit dataset-aware implementation.")
