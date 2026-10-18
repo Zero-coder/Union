@@ -1,28 +1,18 @@
+# New dataset identity registers a new prompt when loading a source checkpoint.
+# Match backbone options and reference seq_len to the source run.
+# Real CSV forecasting example. Paths are relative to the repository root.
+# The row borders below are explicit ETTh2 settings.
 task_dataset:
-  CLS_ECG200:
-    task_name: classification
-    dataset: ECG200
-    data: UEA
-    embed: timeF
-    root_path: ../dataset/ECG200
-    seq_len: 96
-    label_len: 0
-    pred_len: 0
-    enc_in: 1
-    num_class: 2
-    c_out: None
-
-  LTF_ETTh2_p192:
+  ETTh2_forecast_96:
     task_name: long_term_forecast
     dataset: ETTh2
-    data: ETTh2
-    embed: timeF
-    root_path: ../dataset/ETT-small/
+    root_path: dataset/ETT-small
     data_path: ETTh2.csv
+    date_column: date
     features: M
     seq_len: 96
-    label_len: 48
-    pred_len: 192
+    pred_len: 96
     enc_in: 7
-    dec_in: 7
-    c_out: 7
+    split_borders: [8640, 11520]
+    scale: true
+    window_stride: 1

@@ -1,11 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
-mkdir -p dataset
+# Retained as a data-preparation entry point; no benchmark archive is downloaded.
+cat <<'DATA_GUIDE'
+Prepare the licensed source datasets locally before running Union.
 
-echo "Dataset download hooks for Union."
-echo "Mirror the fecam benchmark layout under ./dataset before full reproduction:"
-echo "  ETT-small, electricity, exchange_rate, weather, illness"
-echo "  UEA/UCR classification archives"
-echo "  MSL, PSM, SMAP, SMD, SWAT anomaly datasets"
-echo
-echo "This scaffold intentionally does not auto-download large benchmark files yet."
+Default forecasting example:
+  dataset/ETT-small/ETTh1.csv
+  configs/forecast_csv.yaml records the numeric columns and split borders.
+
+Few-shot forecasting example:
+  dataset/ETT-small/ETTh2.csv
+
+Classification and anomaly detection require converted NPZ files:
+  dataset/classification/classification.npz
+  dataset/anomaly/anomaly.npz
+
+Read docs/data_formats.md for required keys, shapes, split rules, and scaling.
+Adapt each YAML to the actual channel count and sequence length of your data.
+UEA/UCR .ts archives and raw anomaly directories are not converted automatically.
+Prepare the files above before training.
+DATA_GUIDE

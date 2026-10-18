@@ -1,0 +1,13 @@
+# Convert to fixed-length arrays first. See docs/data_formats.md.
+# Keys: x_train/x_val/x_test [samples, seq_len, channels], y_* [samples].
+task_dataset:
+  classification_npz:
+    task_name: classification
+    dataset: classification_npz
+    root_path: dataset/classification
+    data_path: classification.npz
+    seq_len: 96
+    pred_len: 0
+    enc_in: 1
+    num_class: 2
+    scale: true

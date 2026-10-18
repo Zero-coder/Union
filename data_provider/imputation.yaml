@@ -1,15 +1,16 @@
+# Real CSV imputation example. Paths are relative to the repository root.
+# The row borders below are explicit ETTh1 settings.
 task_dataset:
-  LTF_ETTh1_p96:
+  ETTh1_imputation:
     task_name: imputation
     dataset: ETTh1
-    data: ETTh1
-    embed: timeF
-    root_path: ../dataset/ETT-small/
+    root_path: dataset/ETT-small
     data_path: ETTh1.csv
+    date_column: date
     features: M
     seq_len: 96
-    label_len: 0
     pred_len: 0
     enc_in: 7
-    dec_in: 7
-    c_out: 7
+    split_borders: [8640, 11520]
+    scale: true
+    window_stride: 1

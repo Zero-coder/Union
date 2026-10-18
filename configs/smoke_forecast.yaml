@@ -1,17 +1,18 @@
-seed: 42
-task: forecast
-seq_len: 96
-pred_len: 24
-num_vars: 7
-num_classes: 4
-patch_len: 16
-stride: 8
-d_model: 128
-depth: 3
-n_heads: 4
-num_experts: 4
-top_k: 2
-dropout: 0.1
-batch_size: 16
-train_steps: 20
-learning_rate: 0.0003
+# Compatibility filename: now uses real CSV data, with the same schema as forecast_csv.yaml.
+# Run dataset-free functional checks with python -m unittest discover -s tests -v.
+# Real CSV forecasting example. Paths are relative to the repository root.
+# The row borders below are explicit ETTh1 settings.
+task_dataset:
+  ETTh1_forecast_96:
+    task_name: long_term_forecast
+    dataset: ETTh1
+    root_path: dataset/ETT-small
+    data_path: ETTh1.csv
+    date_column: date
+    features: M
+    seq_len: 96
+    pred_len: 96
+    enc_in: 7
+    split_borders: [8640, 11520]
+    scale: true
+    window_stride: 1

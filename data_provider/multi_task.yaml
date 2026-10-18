@@ -1,73 +1,49 @@
+# Mixed CSV/NPZ example. Supply every configured file before training.
+# Adapt paths, channel counts and class counts to the supplied data.
 task_dataset:
-  LTF_ETTh1_p96:
+  ETTh1_forecast_96:
     task_name: long_term_forecast
     dataset: ETTh1
-    data: ETTh1
-    embed: timeF
-    root_path: ../dataset/ETT-small/
+    root_path: dataset/ETT-small
     data_path: ETTh1.csv
+    date_column: date
     features: M
     seq_len: 96
-    label_len: 48
     pred_len: 96
     enc_in: 7
-    dec_in: 7
-    c_out: 7
-
-  LTF_ECL_p96:
-    task_name: long_term_forecast
-    dataset: ECL
-    data: custom
-    embed: timeF
-    root_path: ../dataset/electricity/
-    data_path: electricity.csv
-    features: M
-    seq_len: 96
-    label_len: 48
-    pred_len: 96
-    enc_in: 321
-    dec_in: 321
-    c_out: 321
-
-  IMP_ETTh1:
+    split_borders: [8640, 11520]
+    scale: true
+    window_stride: 1
+  ETTh1_imputation:
     task_name: imputation
     dataset: ETTh1
-    data: ETTh1
-    embed: timeF
-    root_path: ../dataset/ETT-small/
+    root_path: dataset/ETT-small
     data_path: ETTh1.csv
+    date_column: date
     features: M
     seq_len: 96
-    label_len: 0
     pred_len: 0
     enc_in: 7
-    dec_in: 7
-    c_out: 7
-
-  ANOM_MSL:
-    task_name: anomaly_detection
-    dataset_name: MSL
-    dataset: MSL
-    data: MSL
-    root_path: ../dataset/MSL
-    seq_len: 96
-    label_len: 0
-    pred_len: 0
-    features: M
-    embed: timeF
-    enc_in: 55
-    dec_in: 55
-    c_out: 55
-
-  CLS_ECG200:
+    split_borders: [8640, 11520]
+    scale: true
+    window_stride: 1
+  classification_npz:
     task_name: classification
-    dataset: ECG200
-    data: UEA
-    embed: timeF
-    root_path: ../dataset/ECG200
+    dataset: classification_npz
+    root_path: dataset/classification
+    data_path: classification.npz
     seq_len: 96
-    label_len: 0
     pred_len: 0
     enc_in: 1
     num_class: 2
-    c_out: None
+    scale: true
+  anomaly_npz:
+    task_name: anomaly_detection
+    dataset: anomaly_npz
+    root_path: dataset/anomaly
+    data_path: anomaly.npz
+    seq_len: 96
+    pred_len: 0
+    enc_in: 55
+    scale: true
+    window_stride: 1
