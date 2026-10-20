@@ -1,7 +1,4 @@
-"""Analytical file fixtures exercise data boundaries and complete train/eval paths.
-
-Temporary arrays in these tests are not benchmark measurements.
-"""
+"""Unit tests for dataset boundaries, training, and evaluation using temporary file fixtures."""
 import csv
 import json
 from pathlib import Path
