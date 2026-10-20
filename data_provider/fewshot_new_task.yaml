@@ -1,6 +1,6 @@
 # New dataset identity registers a new prompt when loading a source checkpoint.
 # Match backbone options and reference seq_len to the source run.
-# Real CSV forecasting example. Paths are relative to the repository root.
+# CSV forecasting configuration. Paths are relative to the repository root.
 # The row borders below are explicit ETTh2 settings.
 task_dataset:
   ETTh2_forecast_96:
