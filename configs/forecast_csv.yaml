@@ -1,4 +1,4 @@
-# Real CSV forecasting example. Paths are relative to the repository root.
+# CSV forecasting configuration. Paths are relative to the repository root.
 # The row borders below are explicit ETTh1 settings.
 task_dataset:
   ETTh1_forecast_96:
