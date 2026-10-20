@@ -1,4 +1,4 @@
-"""Functional tests for model mechanics; these are not benchmark experiments."""
+"""Unit tests for model operations, gradients, and output shapes."""
 
 import math
 from types import SimpleNamespace
