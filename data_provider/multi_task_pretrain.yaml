@@ -1,5 +1,5 @@
-# Masked-value reconstruction pretraining on real observations.
-# Real CSV imputation example. Paths are relative to the repository root.
+# Masked-value reconstruction pretraining from CSV observations.
+# Paths are relative to the repository root.
 # The row borders below are explicit ETTh1 settings.
 task_dataset:
   ETTh1_pretrain:
