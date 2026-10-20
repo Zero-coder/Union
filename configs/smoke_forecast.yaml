@@ -1,6 +1,6 @@
-# Compatibility filename: now uses real CSV data, with the same schema as forecast_csv.yaml.
+# CSV forecasting configuration using the schema in forecast_csv.yaml.
 # Run dataset-free functional checks with python -m unittest discover -s tests -v.
-# Real CSV forecasting example. Paths are relative to the repository root.
+# Paths are relative to the repository root.
 # The row borders below are explicit ETTh1 settings.
 task_dataset:
   ETTh1_forecast_96:
