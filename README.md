@@ -111,8 +111,7 @@ checkpoints are not included.
 
 [`analysis/prompt_similarity/`](analysis/prompt_similarity/) contains the
 similarity matrix, dataset-domain assignments, metric results, and calculation
-script. Its README records the input provenance, metric definitions, and
-commands for reproducing the numerical analysis.
+script.
 
 ## Implementation scope
 
@@ -120,8 +119,7 @@ Training supports a single process, masked reconstruction pretraining, and
 full fine-tuning. Prompt-only tuning and zero-shot adaptation are not available.
 Classification requires prepared fixed-length NPZ arrays; native UEA/UCR `.ts`
 loading and raw anomaly-archive conversion are not included. Unsupported
-options fail explicitly. See [`docs/reproduction_gap.md`](docs/reproduction_gap.md)
-for the complete implementation and evaluation scope.
+options fail explicitly.
 
 Some script filenames are retained for compatibility. The `zero_shot` script
 performs ordinary checkpoint evaluation, and `download_data_all.sh` displays
@@ -139,7 +137,7 @@ task and consult each script before running it.
 | `scripts/` | Task-specific command examples |
 | `tests/` | Model and training functional tests |
 | `analysis/prompt_similarity/` | Figure 5 numerical analysis |
-| `docs/` | Architecture, data formats, and implementation scope |
+| `docs/` | Architecture and data formats |
 
 PyTorch, NumPy, PyYAML, and the datasets retain their respective licenses and
 usage conditions.
