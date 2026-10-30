@@ -101,11 +101,10 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s analysis/prompt_similarity -p "test_*.py" -v
 ```
 
-The implementation has passed 26 CPU functional tests covering model gradients,
-variable input shapes, routing, masking, data splits, training, checkpoint
-loading, and evaluation, plus six prompt-analysis tests. Benchmark accuracy and
-GPU scalability have not been evaluated for this release; trained benchmark
-checkpoints are not included.
+
+
+
+
 
 ## Figure 5 quantitative analysis
 
